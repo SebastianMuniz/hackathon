@@ -1,0 +1,96 @@
+.descriptionContainer {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 6px 6px 0 0;
+  bottom: 0;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  font-size: 24px;
+  height: 139px;
+  left: 0;
+  line-height: 2;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+
+  .productImageContainer {
+    box-shadow: 3px;
+    height: 115px;
+    margin: 12px;
+    overflow: hidden;
+    width: 115px;
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .productDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    line-height: 21px;
+    margin-top: 12px;
+    text-align: left;
+
+    .brandName {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .productName {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .starsContainer {
+      height: 12px;
+      margin: 6px 0;
+      font-size: 12px;
+    }
+
+    .productPrice {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .ctaContainer {
+      button {
+        background-color: #FF5B5D;
+        border-radius: 3px;
+        border-width: 0;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        height: 24px;
+        margin: 0;
+        padding: 3px 6px;
+        width: 118px;
+      }
+    }
+  }
+}
+
+.cardHeaderContainer {
+  display: none;
+  background-color: #000;
+  color: #fff;
+  height: 64px;
+  line-height: 1.5;
+  padding-left: 48px;
+  padding-top: 24px;
+  position: fixed;
+  text-align: left;
+  top: 0;
+  width: 100vw;
+
+  .headerBrandText {
+    font-size: 14;
+    font-weight: 800;
+    height: 24px;
+  }
+
+  .headerProductText {
+    font-size: 16px;
+    height: 24px;
+  }
+}
