@@ -1,0 +1,17 @@
+progress.videoProgress {
+  background: none;
+  border: 0;
+  bottom: 0;
+  height: 3px;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  
+  &::-webkit-progress-value {
+    background: #ff5b5d;
+  }
+  
+  &::-webkit-progress-bar {
+    background: none;
+  }
+}

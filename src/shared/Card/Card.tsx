@@ -1,46 +1,34 @@
-import ReactPlayer from 'react-player/youtube';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import React from 'react';
+import { ProductCard } from '../../types/product';
+import { useCartContext } from '../../context/CartContext';
+import VideoPlayer from '../VideoPlayer';
 import styles from './Card.module.scss';
+import Rating from '../Ratings';
+import { formatPrice } from '../../utils';
 
-const MOCK_IMAGE = "https://scontent01.fabfitfun.com/ecom/images/2023/2/438000000-date-night-min-bo-037-1-800-2.jpg";
-
-const Card = () => {
-  const { height, width } = useWindowDimensions();
+const Card = ({ id, brand, productName, videoId, image, ratings, price, reviews }: ProductCard) => {
+  const { addProductToCart } = useCartContext();
+  const onAddToCart = () => addProductToCart(id);
 
   return (
-    <div>
-      <div className={styles.cardHeaderContainer as any}>
-        <div className={styles.headerBrandText}>BRAND: ########</div>
-        <div className={styles.headerProductText}>PRODUCT NAME: #######</div>
-      </div>
-      <ReactPlayer
-        width={width}
-        height={height}
-        muted
-        playing
-        url="https://www.youtube.com/shorts/7uzB_wVf1t8?modestbranding=0"
-        loop
-      />
+    <div className={styles.card}>
+      <VideoPlayer videoId={videoId} />
       <div className={styles.descriptionContainer}>
         <div className={styles.productImageContainer}>
-          <img src={MOCK_IMAGE} />
+          <img src={image} alt={productName} />
         </div>
         <div className={styles.productDetailsContainer}>
-          <div className={styles.brandName}>BRAND NAME</div>
-          <div className={styles.productName}>Product Name</div>
-          <div className={styles.starsContainer}>
-            stars
-          </div>
-          <div className={styles.productPrice}>
-            $3.00
-          </div>
+          <div className={styles.brandName}>{brand}</div>
+          <div className={styles.productName}>{productName}</div>
+          <Rating rating={ratings} reviews={reviews} />
+          <div className={styles.productPrice}>{formatPrice(price)}</div>
           <div className={styles.ctaContainer}>
-            <button>ADD TO CART</button>
+            <button onClick={onAddToCart}>ADD TO CART</button>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Card;

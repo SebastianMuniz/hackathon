@@ -1,0 +1,32 @@
+@use '../../base';
+.cart {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+
+  .icon {
+    color: white;
+
+    .quantityBadge {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: -5px;
+      right: -5px;
+      background: #FF5B5D;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      font-size: 9px;
+    }
+  }
+  // @media screen {
+  //   display: flex;
+  //   height: 32px;
+  //   width: 32px;
+  //   border: 1px solid #D0D0D0;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+}

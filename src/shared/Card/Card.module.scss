@@ -1,21 +1,30 @@
+@use '../../base';
+
+.card {
+  position: relative;
+}
+
 .descriptionContainer {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 6px 6px 0 0;
   bottom: 0;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
   display: flex;
+  font-family: base.$nunito-sans, sans-serif;
   font-size: 24px;
-  height: 139px;
+  height: 115px;
   left: 0;
-  line-height: 2;
-  position: fixed;
+  position: absolute;
   text-align: center;
   width: 100vw;
+  padding: 12px;
+  align-items: center;
 
   .productImageContainer {
+    border-radius: 3px;
     box-shadow: 3px;
     height: 115px;
-    margin: 12px;
+    margin-right: 12px;
     overflow: hidden;
     width: 115px;
 
@@ -29,7 +38,6 @@
     display: flex;
     flex-direction: column;
     line-height: 21px;
-    margin-top: 12px;
     text-align: left;
 
     .brandName {
@@ -39,13 +47,13 @@
 
     .productName {
       font-size: 14px;
+      line-height: 21px;
       font-weight: 400;
     }
 
     .starsContainer {
-      height: 12px;
-      margin: 6px 0;
-      font-size: 12px;
+      margin: 0;
+      width: 100px;
     }
 
     .productPrice {
@@ -55,9 +63,9 @@
 
     .ctaContainer {
       button {
-        background-color: #FF5B5D;
+        background-color: #ff5b5d;
         border-radius: 3px;
-        border-width: 0;
+        border: none;
         color: #fff;
         font-size: 14px;
         font-weight: 700;
@@ -65,6 +73,11 @@
         margin: 0;
         padding: 3px 6px;
         width: 118px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f8bdbb;
+        }
       }
     }
   }
@@ -92,5 +105,28 @@
   .headerProductText {
     font-size: 16px;
     height: 24px;
+  }
+}
+
+@media screen and (min-width: base.$mq-lg) {
+  .card {
+      width: 282px;
+      height: 501px;
+  }
+  
+  .productImageContainer {
+    display: none;
+  }
+
+  .descriptionContainer {
+    height: 109px;
+    width: calc(100% - 24px);
+    border-radius: 0;
+
+    .productDetailsContainer {
+      .productName {
+        line-height: 16px;
+      }
+    }
   }
 }

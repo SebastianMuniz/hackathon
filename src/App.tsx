@@ -1,31 +1,16 @@
-import { useEffect, useState } from 'react';
-
-import { getProducts } from './firebase/api';
-import { Product } from './types/product';
-import { Card } from './shared'
+import React from 'react';
+import { CartProvider } from './context/CartContext';
+import Main from './pages/Main';
+import Layout from './shared/Layout';
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-  console.log('products', products);
-
-  const fetchProducts = async () => {
-    try {
-      const response = await getProducts() as Product[];
-      setProducts(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   return (
-    <div>
-      <Card />
-    </div>
-  )
+    <CartProvider>
+      <Layout>
+        <Main />
+      </Layout>
+    </CartProvider>
+  );
 }
 
 export default App;
