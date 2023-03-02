@@ -14,7 +14,8 @@ export default {
   icon: {
     width: '20%',
     justifyContent: 'center',
-    display: 'flex'
+    display: 'flex',
+    zIndex: 1
   } as React.CSSProperties,
   title: {
     width: '60%',

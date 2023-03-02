@@ -1,0 +1,41 @@
+@use '../../base';
+
+.shareButton {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  top: 112px;
+  right: 40px;
+
+  .icon {
+    color: white;
+  }
+
+  .shareButtonsList {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 6px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+    margin: 6px 0;
+    padding: 6px 6px 2px 6px;
+
+    & > * {
+      margin: 0 4px;
+    }
+  }
+
+}
+
+@media screen and (min-width: base.$mq-lg) {
+  .shareButton {
+      flex-direction: column-reverse;
+      top: auto;
+      bottom: 152px;
+      right: 32px;
+
+    .shareButtonsList {
+      margin-bottom: 12px;
+      width: 120px;
+    }
+  }
+}

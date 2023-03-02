@@ -1,0 +1,39 @@
+@use '../../base';
+
+.ctaContainer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+
+  button {
+    font-weight: 700;
+    border-radius: 3px;
+    height: 24px;
+    margin: 0;
+    padding: 3px 6px;
+    width: 118px;
+    z-index: 1;
+    border: none;
+    cursor: pointer;
+  }
+
+  .addButton {
+    background-color: #ff5b5d;
+    color: #fff;
+
+    &:hover {
+      background-color: #f8bdbb;
+    }
+  }
+
+  .outOfStock {
+    background-color: lightgray;
+    color: black;
+    cursor: not-allowed;
+  }
+
+  .addToCart,
+  .removeFromCart {
+    width: 20px;
+  }
+}

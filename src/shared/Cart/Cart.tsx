@@ -3,12 +3,12 @@ import { useCartContext } from '../../context/CartContext';
 import styles from './Cart.module.scss';
 
 const Cart = () => {
-  const { totalItems } = useCartContext()
+  const { totalItems, showCart } = useCartContext()
   return (
-    <div className={styles.cart}>
+    <div className={styles.cart} style={{ top: showCart ? '60px' : '20px' }}>
       <div className={styles.icon}>
         <span className={styles.quantityBadge}>{totalItems()}</span>
-        <AiOutlineShoppingCart size={24} />
+        <AiOutlineShoppingCart size={24} color={showCart ? "#FFF" : "#000"} />
       </div>
     </div>
   );

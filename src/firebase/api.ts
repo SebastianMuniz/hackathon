@@ -2,7 +2,7 @@ import {
   query,
   collection,
   getDocs,
-  // onSnapshot,
+  onSnapshot,
   orderBy,
   limit,
   startAfter
@@ -22,9 +22,7 @@ export const getProducts = async (start: any, setLasVisible: any, productsLimit:
   return productsSnapshot.docs.map(doc => doc.data());
 };
 
-// export const onGetProducts = (callback: any) => {
-//   const snapshot = onSnapshot(collection(db, COLLECTION_NAME), callback);
-//   return snapshot;
-// };
-
-
+export const onGetProducts = (callback: any) => {
+  const snapshot = onSnapshot(collection(db, COLLECTION_NAME), callback);
+  return snapshot;
+};

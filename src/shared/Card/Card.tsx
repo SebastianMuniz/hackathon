@@ -1,19 +1,37 @@
-import React from 'react';
-import { ProductCard } from '../../types/product';
-import { useCartContext } from '../../context/CartContext';
-import VideoPlayer from '../VideoPlayer';
-import styles from './Card.module.scss';
-import Rating from '../Ratings';
-import { formatPrice } from '../../utils';
+import React from "react";
+import { ProductCard } from "../../types/product";
+import ShareButton from '../ShareButton';
+import VideoPlayer from "../VideoPlayer";
+import styles from "./Card.module.scss";
+import Rating from "../Ratings";
+import { formatPrice } from "../../utils";
+import AddToCart from '../AddToCart';
 
-const Card = ({ id, brand, productName, videoId, image, ratings, price, reviews }: ProductCard) => {
-  const { addProductToCart } = useCartContext();
-  const onAddToCart = () => addProductToCart(id);
+interface ICardProps extends ProductCard {
+  toggleDetails: () => void;
+  videoIndex: number;
+}
 
+const Card: React.FC<ICardProps> = ({
+  id,
+  brand,
+  productName,
+  videoId,
+  image,
+  ratings,
+  reviews,
+  price,
+  slug,
+  hashtags,
+  toggleDetails,
+  videoIndex,
+  stock
+}) => {
   return (
     <div className={styles.card}>
-      <VideoPlayer videoId={videoId} />
-      <div className={styles.descriptionContainer}>
+      <ShareButton slug={slug} hashtags={hashtags} />
+      <VideoPlayer videoId={videoId} videoIndex={videoIndex} />
+      <div className={styles.descriptionContainer} onClick={toggleDetails}>
         <div className={styles.productImageContainer}>
           <img src={image} alt={productName} />
         </div>
@@ -22,9 +40,7 @@ const Card = ({ id, brand, productName, videoId, image, ratings, price, reviews 
           <div className={styles.productName}>{productName}</div>
           <Rating rating={ratings} reviews={reviews} />
           <div className={styles.productPrice}>{formatPrice(price)}</div>
-          <div className={styles.ctaContainer}>
-            <button onClick={onAddToCart}>ADD TO CART</button>
-          </div>
+          <AddToCart productId={id} outOfStock={stock === 0} />
         </div>
       </div>
     </div>

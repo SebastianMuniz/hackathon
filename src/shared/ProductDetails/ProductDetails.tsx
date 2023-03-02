@@ -1,32 +1,28 @@
 import React from 'react'
 
+import { Product } from '../../types/product'
 import leftIcon from '../../icon/angle-left.png'
-import cartIcon from '../../icon/cart-shopping.png'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import styles from './ProductDetails.style'
+import Rating from '../Ratings';
+import { useCartContext } from "../../context/CartContext";
 
-interface IProductDetailsProps {
-  image: string
-  title: string
-  rating: number
-  price: number
-  description: string
+interface IProductDetailsProps extends Product {
+  toggleDetails: () => void
 }
 
-
-const ProductDetails: React.FC<IProductDetailsProps> = ({ image, title, price, rating, description }) => {
+const ProductDetails: React.FC<IProductDetailsProps> = ({ id, image, name, price, ratings, description, reviews, toggleDetails }) => {
   const { height, width } = useWindowDimensions()
+  const { addProductToCart } = useCartContext();
+
   return (
     <div style={{ ...styles.container, height }}>
       <div style={styles.headerContainer}>
-        <div style={styles.icon}>
+        <div style={styles.icon} onClick={toggleDetails}>
           <img src={leftIcon} width={20} height={20} />
         </div>
         <div style={styles.title}>
           Product Details
-        </div>
-        <div style={styles.icon}>
-          <img src={cartIcon} width={20} height={20} />
         </div>
       </div>
       <img src={image} height="40%" width={width} />
@@ -35,9 +31,9 @@ const ProductDetails: React.FC<IProductDetailsProps> = ({ image, title, price, r
           fontSize: 24,
           fontWeight: 400
         }}>
-          {title}
+          {name}
         </div>
-        <div style={styles.raitingsContainer}>{rating}</div>
+        <Rating rating={ratings} reviews={reviews} />
         <div style={styles.hyperlink}>
           Write & Read Reviews
         </div>
@@ -50,7 +46,7 @@ const ProductDetails: React.FC<IProductDetailsProps> = ({ image, title, price, r
         <div style={styles.descriptionContainer}>
           {description}
         </div>
-        <div style={styles.ctaContainer}>
+        <div style={styles.ctaContainer} onClick={() => addProductToCart(id)}>
           ADD TO CART
         </div>
       </div>

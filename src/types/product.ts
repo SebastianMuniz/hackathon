@@ -9,6 +9,8 @@ export type Product = {
   description: string;
   ratings: number;
   reviews: number;
+  slug: string;
+  stock: number;
 };
 
 export type ProductCard = {
@@ -20,4 +22,7 @@ export type ProductCard = {
   ratings: number;
   price: number;
   reviews: number;
+  slug: string;
+  hashtags: string[];
+  stock: number;
 };
